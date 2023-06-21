@@ -26,10 +26,10 @@ import md5Hex from 'md5-hex';
  */
 export function addHuburbs(object: Regions) {
 	// If the object has no GHub property, create one
-	object.GHub ??= {};
+	object.CORE ??= {};
 	// Add each region code and name pair to the GHub property
 	for (const regionCode in GHubHuburbRegions) {
-		object.GHub[regionCode] = GHubHuburbRegions[regionCode];
+		object.CORE[regionCode] = GHubHuburbRegions[regionCode];
 	}
 }
 
@@ -311,22 +311,28 @@ export function civ() {
 
 	// Based on the input, set the values for the civData object.
 	switch (input) {
-		case 'GHub':
-			civData.galaxy = 'Euclid';
-			civData.civilized = 'Galactic Hub Project';
-			civData.civStub = 'GHub';
+		case 'ZikCORE':
+			civData.galaxy = 'Zikehpm';
+			civData.civilized = 'Zikehpm CORE';
+			civData.civStub = 'ZikCORE';
 			break;
 
-		case 'CalHub':
-			civData.galaxy = 'Calypso';
-			civData.civilized = 'Galactic Hub Calypso';
-			civData.civStub = 'GHub Calypso';
+		case 'BroomCORE':
+			civData.galaxy = 'Broomerrai';
+			civData.civilized = 'Broomerrai CORE';
+			civData.civStub = 'BroomCORE';
 			break;
 
-		case 'EisHub':
-			civData.galaxy = 'Eissentam';
-			civData.civilized = 'Galactic Hub Eissentam';
-			civData.civStub = 'GHub Eissentam';
+		case 'SezCORE':
+			civData.galaxy = 'Sezviktorew';
+			civData.civilized = 'Sezviktorew CORE';
+			civData.civStub = 'SezCORE';
+			break;
+
+		case 'LuleCORE':
+			civData.galaxy = 'Luleukous';
+			civData.civilized = 'Luleukous CORE';
+			civData.civStub = 'LuleCORE';
 			break;
 	}
 
@@ -521,15 +527,19 @@ export function toggleSection(sectionName: string = '', button: HTMLButtonElemen
 export function researchTeamDropdown(inputElement: HTMLSelectElement = globalElements.input.researchTeam as HTMLSelectElement, civ = pageData.civShort) {
 	if (!inputElement) return;
 	const prevSelect = inputElement.value;
-	const teams = ['', 'GHGS', 'GHEC', 'GHSH', 'GHDF', 'GHBG', 'GHSL', 'GHTD', 'HBS'];
+	const teams = ['none'];
 
 	switch (civ) {
-		case "CalHub":
-			teams.push('CalHub Archivists');
+		case "BroomCORE":
+			teams.push('none');
 			break;
 
-		case "EisHub":
-			teams.push('EisHub Scribes', 'EPC', 'The Eissentimes Press');
+		case "SezCORE":
+			teams.push('none');
+			break;
+
+		case "LuleCORE":
+			teams.push('none');
 			break;
 	}
 	setDropdownOptions(inputElement, teams);
@@ -841,7 +851,7 @@ export function docByResearchteam(expected: string) {
 		GHEC: 'Exobiology Corps',
 	}
 	if (researchteam == expected) {
-		return ` and documented by the [[Galactic Hub ${researchteamData[expected]}]]`;
+		return ` and documented by the [[CORE ${researchteamData[expected]}]]`;
 	} else {
 		return '';
 	}

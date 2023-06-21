@@ -182,7 +182,7 @@ export function glyphRegion(glyphs: string) {
 export function glyphError(region: string | undefined, glyphElement: HTMLElement) {
 	errorMessage(glyphElement,
 		(region == undefined)
-			? 'No valid Hub region. See <a href="https://nomanssky.fandom.com/wiki/Galactic_Hub_Regions" target="_blank" rel="noopener noreferrer">Galactic Hub Regions</a> for a list of valid regions.'
+			? 'No valid CORE region. See <a href="https://nomanssky.fandom.com/wiki/CORE_Regions" target="_blank" rel="noopener noreferrer">Galactic CORE Regions</a> for a list of valid regions.'
 			: '');
 }
 
